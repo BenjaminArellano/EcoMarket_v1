@@ -1,4 +1,4 @@
-package Pedidos.service;
+package EcoMarket.EcoMarket.Pedidos.service;
 
 import java.util.List;
 

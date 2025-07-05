@@ -2,6 +2,8 @@ package EcoMarket.EcoMarket.Productos.model;
 
 import EcoMarket.EcoMarket.Usuarios.model.Cliente;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -17,7 +19,8 @@ import lombok.NoArgsConstructor;
 public class Resenia {
 
     @Id 
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     private int calificacion;
     private String comentario;

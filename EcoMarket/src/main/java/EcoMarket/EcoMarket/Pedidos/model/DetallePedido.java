@@ -2,6 +2,8 @@ package EcoMarket.EcoMarket.Pedidos.model;
 
 import EcoMarket.EcoMarket.Productos.model.Producto;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -16,7 +18,8 @@ import lombok.NoArgsConstructor;
 public class DetallePedido {
 
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     private int cantidad;
     private int precio;

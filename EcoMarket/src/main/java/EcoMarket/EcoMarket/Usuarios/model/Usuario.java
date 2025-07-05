@@ -1,6 +1,10 @@
 package EcoMarket.EcoMarket.Usuarios.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -15,7 +19,8 @@ import lombok.NoArgsConstructor;
 public class Usuario {
 
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     
     private String nombre;
     private String apellido;
@@ -24,5 +29,6 @@ public class Usuario {
 
     @ManyToOne
     @JoinColumn(name = "rol_id")
+    @JsonIgnoreProperties("permisos")
     private Rol rol;
 }

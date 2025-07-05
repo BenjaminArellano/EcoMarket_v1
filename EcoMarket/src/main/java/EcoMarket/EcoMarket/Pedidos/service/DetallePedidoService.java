@@ -1,12 +1,14 @@
-package Pedidos.service;
+package EcoMarket.EcoMarket.Pedidos.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import Pedidos.model.DetallePedido;
-import Pedidos.repository.DetallePedidoRepository;
+import EcoMarket.EcoMarket.Pedidos.model.DetallePedido;
+import EcoMarket.EcoMarket.Pedidos.repository.DetallePedidoRepository;
+
+
 
 
 @Service
@@ -19,15 +21,37 @@ public class DetallePedidoService {
         return detallePedidoRepository.findAll();
     }
 
-    public DetallePedido ObtenerPorId(Long id) {
-        return detallePedidoRepository.findById(id).orElse(null);
+    public DetallePedido ObtenerPorId(int id) {
+        return detallePedidoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Detalle de Pedido no encontrado con ID: " + id));
     }
 
     public DetallePedido guardar(DetallePedido detalle) {
+
+        if (detalle.getCantidad() <= 0 || detalle.getCantidad() > 100) {
+            throw new IllegalArgumentException("La cantidad debe ser entre 1 y 100.");
+        }
+
+        if (detalle.getPrecio() <= 0) {
+            throw new IllegalArgumentException("El precio debe ser mayor a 0");
+        }
+
+        if (detalle.getPedido() == null) {
+            throw new IllegalArgumentException("El Detalle debe tener un pedido.");
+        }
+
+        if (detalle.getProducto() == null) {
+            throw new IllegalArgumentException("El Detalle debe tener un pedido.");
+        }
+
         return detallePedidoRepository.save(detalle);
     }
 
-    public void eliminar(Long id) {
+    public void eliminar(int id) {
+
+    if (!detallePedidoRepository.existsById(id)) {
+        throw new IllegalArgumentException("No se puede eliminar. Detalle con ID " + id + " no existe.");
+    }
+
     detallePedidoRepository.deleteById(id);
     }
 }

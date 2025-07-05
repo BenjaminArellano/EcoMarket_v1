@@ -1,4 +1,4 @@
-package Productos.controller;
+package EcoMarket.EcoMarket.Productos.controller;
 
 import java.util.List;
 

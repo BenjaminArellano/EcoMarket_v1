@@ -1,12 +1,13 @@
-package Pedidos.service;
+package EcoMarket.EcoMarket.Pedidos.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import Pedidos.model.Envio;
-import Pedidos.repository.EnvioRepository;
+import EcoMarket.EcoMarket.Pedidos.model.Envio;
+import EcoMarket.EcoMarket.Pedidos.repository.EnvioRepository;
+
 
 
 @Service
@@ -20,15 +21,15 @@ public class EnvioService {
         return envioRepository.findAll();
     }
 
-    public Envio ObtenerPorId(Long id) {
-        return envioRepository.findById(id).orElse(null);
+    public Envio ObtenerPorId(int id) {
+        return envioRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Envio no encontrado con ID: " + id));
     }
 
     public Envio guardar(Envio envio) {
         return envioRepository.save(envio);
     }
 
-    public void eliminar(Long id) {
+    public void eliminar(int id) {
         envioRepository.deleteById(id);
     }
 }

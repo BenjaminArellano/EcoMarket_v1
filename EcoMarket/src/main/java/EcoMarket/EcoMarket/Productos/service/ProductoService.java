@@ -1,4 +1,4 @@
-package Productos.service;
+package EcoMarket.EcoMarket.Productos.service;
 
 import java.util.List;
 

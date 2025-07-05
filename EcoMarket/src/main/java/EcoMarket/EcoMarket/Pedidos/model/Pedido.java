@@ -1,11 +1,14 @@
 package EcoMarket.EcoMarket.Pedidos.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import EcoMarket.EcoMarket.Usuarios.model.Cliente;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -21,7 +24,8 @@ import lombok.NoArgsConstructor;
 public class Pedido {
 
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     private LocalDateTime fecha;
     private String estado;
@@ -32,7 +36,7 @@ public class Pedido {
     private Cliente cliente;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
-    private List<DetallePedido> detalle;
+    private List<DetallePedido> detalle = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "cupon_id") 

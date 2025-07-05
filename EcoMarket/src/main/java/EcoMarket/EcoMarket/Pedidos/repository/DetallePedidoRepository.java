@@ -1,12 +1,14 @@
-package Pedidos.repository;
+package EcoMarket.EcoMarket.Pedidos.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import Pedidos.model.DetallePedido;
+import EcoMarket.EcoMarket.Pedidos.model.DetallePedido;
+
+
 
 @Repository
-public interface  DetallePedidoRepository extends JpaRepository<DetallePedido, Long> {
+public interface  DetallePedidoRepository extends JpaRepository<DetallePedido, Integer> {
 
 
 }

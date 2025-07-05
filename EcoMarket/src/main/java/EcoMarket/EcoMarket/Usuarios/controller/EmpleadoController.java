@@ -1,4 +1,4 @@
-package Usuarios.controller;
+package EcoMarket.EcoMarket.Usuarios.controller;
 
 import java.util.List;
 
