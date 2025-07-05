@@ -12,47 +12,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import Pedidos.model.DetallePedido;
-import Pedidos.service.DetallePedidoService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
+import EcoMarket.EcoMarket.Pedidos.model.DetallePedido;
+import EcoMarket.EcoMarket.Pedidos.service.DetallePedidoService;
+
+
 
 @RestController
 @RequestMapping("/api/detallepedidos")
-@Tag(name="DetallePedido", description = "CRUD de los detalles de los pedidos")
+
 public class DetallePedidoController {
 
     @Autowired
     private DetallePedidoService detallePedidoService;
 
     @GetMapping
-    @Operation(summary = "Trae a todos los detalles de la BDD")
     public List<DetallePedido> obtenerTodos() {
         return detallePedidoService.obtenerTodos();
     }
 
     @GetMapping("/{id}")
-    @Operation(summary = "Trae al detalle pedido con el id")
-    public DetallePedido obtenerPorId(@PathVariable Long id) {
+    public DetallePedido obtenerPorId(@PathVariable int id) {
         return detallePedidoService.ObtenerPorId(id);
     }
 
     @PostMapping
-    @Operation(summary = "guarda el detalle")
     public DetallePedido guardar(@RequestBody DetallePedido detalle) {
         return detallePedidoService.guardar(detalle);
     }
 
     @PutMapping("/{id}")
-    @Operation(summary = "actualiza el detalle pedido")
-    public DetallePedido actualizar(@PathVariable Long id, @RequestBody DetallePedido detalle) {
+    public DetallePedido actualizar(@PathVariable int id, @RequestBody DetallePedido detalle) {
         detalle.setId(id);
         return detallePedidoService.guardar(detalle);
     }
 
     @DeleteMapping("/{id}")
-    @Operation(summary = "Elimina a el detalle pedido seleccionado")
-    public String eliminar(@PathVariable Long id) {
+    public String eliminar(@PathVariable int id) {
         detallePedidoService.eliminar(id);
         return "Detalle de Pedido eliminado con éxito";
     }

@@ -8,6 +8,6 @@ import EcoMarket.EcoMarket.Usuarios.model.Empleado;
 
 
 @Repository
-public interface  EmpleadoRepository extends JpaRepository<Empleado, Long> {
+public interface  EmpleadoRepository extends JpaRepository<Empleado, Integer> {
 
 }

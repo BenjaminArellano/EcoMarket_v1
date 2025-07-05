@@ -26,10 +26,28 @@ public class EnvioService {
     }
 
     public Envio guardar(Envio envio) {
+
+        if (envio.getDireccion() == null || envio.getDireccion().trim().isEmpty()) {
+            throw new IllegalArgumentException("La direccion no puede estar vacía.");
+        }
+
+        if (envio.getEstado() == null || envio.getEstado().trim().isEmpty()) {
+            throw new IllegalArgumentException("El estado no puede estar vacío.");
+        }
+
+        if (envio.getPedido() == null) {
+            throw new IllegalArgumentException("El envio debe tener un pedido.");
+        }
+
+
         return envioRepository.save(envio);
     }
 
     public void eliminar(int id) {
+
+        if (!envioRepository.existsById(id)) {
+        throw new IllegalArgumentException("No se puede eliminar. Envio con ID " + id + " no existe.");
+        }
         envioRepository.deleteById(id);
     }
 }

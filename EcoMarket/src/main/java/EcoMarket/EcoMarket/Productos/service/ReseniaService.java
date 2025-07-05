@@ -5,8 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import Productos.model.Resenia;
-import Productos.repository.ReseniaRepository;
+import EcoMarket.EcoMarket.Productos.model.Resenia;
+import EcoMarket.EcoMarket.Productos.repository.ReseniaRepository;
+
 
 @Service
 public class ReseniaService {
@@ -18,7 +19,7 @@ public class ReseniaService {
         return reseniaRepository.findAll();
     }
 
-    public Resenia obtenerPorId(Long id) {
+    public Resenia obtenerPorId(int id) {
         return reseniaRepository.findById(id).orElse(null);
     }
 
@@ -26,7 +27,7 @@ public class ReseniaService {
         return reseniaRepository.save(resenia);
     }
 
-    public void eliminar(Long id) {
+    public void eliminar(int id) {
         reseniaRepository.deleteById(id);
     }
 }

@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import Usuarios.model.Empleado;
-import Usuarios.repository.EmpleadoRepository;
+import EcoMarket.EcoMarket.Usuarios.model.Empleado;
+import EcoMarket.EcoMarket.Usuarios.repository.EmpleadoRepository;
+
+
 
 
 @Service
@@ -19,7 +21,7 @@ public class EmpleadoService {
         return empleadoRepository.findAll();
     }
 
-    public Empleado ObtenerPorId(Long id) {
+    public Empleado ObtenerPorId(int id) {
         return empleadoRepository.findById(id).orElse(null);
     }
 
@@ -27,7 +29,7 @@ public class EmpleadoService {
         return empleadoRepository.save(empleado);
     }
 
-    public void eliminar(Long id) {
+    public void eliminar(int id) {
         empleadoRepository.deleteById(id);
     }
 

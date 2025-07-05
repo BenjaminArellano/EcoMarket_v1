@@ -12,40 +12,34 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import Usuarios.model.Usuario;
-import Usuarios.service.UsuarioService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
+import EcoMarket.EcoMarket.Usuarios.model.Usuario;
+import EcoMarket.EcoMarket.Usuarios.service.UsuarioService;
+
 
 @RestController
 @RequestMapping("/api/usuarios")
-@Tag(name="Usuario", description = "CRUD de los usuarios")
 public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
 
     @GetMapping
-    @Operation(summary = "Trae todos los usuarios de la BDD")
     public List<Usuario> obtenerTodos() {
         return usuarioService.obtenerTodos();
     }
 
     @PostMapping
-    @Operation(summary = "Guarda el usuario")
     public Usuario guardar(@RequestBody Usuario usuario) {
         return usuarioService.guardar(usuario);
     }
 
     @GetMapping("/{id}")
-    @Operation(summary = "Trae al usuario seleccionado")
-    public Usuario obtenerPorId(@PathVariable Long id) {
+    public Usuario obtenerPorId(@PathVariable int id) {
         return usuarioService.ObtenerPorId(id);
     }
 
     @PutMapping("/{id}")
-    @Operation(summary = "Actualiza el usuario seleccionado")
-    public Usuario actualizar(@PathVariable Long id, @RequestBody Usuario usuario) {
+    public Usuario actualizar(@PathVariable int id, @RequestBody Usuario usuario) {
         Usuario usuarioExistente = usuarioService.ObtenerPorId(id);
         if (usuarioExistente != null) {
             usuario.setId(id);
@@ -55,8 +49,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
-    @Operation(summary = "Elimina el usuario seleccionado")
-    public String eliminar(@PathVariable Long id) {
+    public String eliminar(@PathVariable int id) {
         usuarioService.eliminar(id);
         return "Usuario eliminado con éxito";
     }

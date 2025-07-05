@@ -5,8 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import Productos.model.Inventario;
-import Productos.repository.InventarioRepository;
+import EcoMarket.EcoMarket.Productos.model.Inventario;
+import EcoMarket.EcoMarket.Productos.repository.InventarioRepository;
+
 
 @Service
 public class InventarioService {
@@ -18,7 +19,7 @@ public class InventarioService {
         return inventarioRepository.findAll();
     }
 
-    public Inventario obtenerPorId(Long id) {
+    public Inventario obtenerPorId(int id) {
         return inventarioRepository.findById(id).orElse(null);
     }
 
@@ -26,7 +27,7 @@ public class InventarioService {
         return inventarioRepository.save(inventario);
     }
 
-    public void eliminar(Long id) {
+    public void eliminar(int id) {
         inventarioRepository.deleteById(id);
     }
 }

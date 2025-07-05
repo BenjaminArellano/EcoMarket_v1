@@ -12,47 +12,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import Pedidos.model.Cupon;
-import Pedidos.service.CuponService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
+import EcoMarket.EcoMarket.Pedidos.model.Cupon;
+import EcoMarket.EcoMarket.Pedidos.service.CuponService;
+
 
 @RestController
 @RequestMapping("/api/cupones")
-@Tag(name="Cupon", description = "CRUD de los cupones")
 public class CuponController {
 
     @Autowired
     private CuponService cuponService;
 
     @GetMapping
-    @Operation(summary = "Trae a todos los cupones de la BDD")
     public List<Cupon> obtenerTodos() {
         return cuponService.obtenerTodos();
     }
 
     @GetMapping("/{id}")
-    @Operation(summary = "Trae el cupon con el id de la BDD")
-    public Cupon obtenerPorId(@PathVariable Long id) {
+    public Cupon obtenerPorId(@PathVariable int id) {
         return cuponService.ObtenerPorId(id);
     }
 
     @PostMapping
-    @Operation(summary = "Guarda un cupon")
     public Cupon guardar(@RequestBody Cupon cupon) {
         return cuponService.guardar(cupon);
     }
 
     @PutMapping("/{id}")
-    @Operation(summary = "Actualiza un cupon")
-    public Cupon actualizar(@PathVariable Long id, @RequestBody Cupon cupon) {
+    public Cupon actualizar(@PathVariable int id, @RequestBody Cupon cupon) {
         cupon.setId(id);
         return cuponService.guardar(cupon);
     }
 
     @DeleteMapping("/{id}")
-    @Operation(summary = "elimina un cupon")
-    public String eliminar(@PathVariable Long id) {
+    public String eliminar(@PathVariable int id) {
         cuponService.eliminar(id);
         return "cupon eliminado con éxito";
     }

@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import Productos.model.Proveedor;
-import Productos.repository.ProveedorRepository;
+import EcoMarket.EcoMarket.Productos.model.Proveedor;
+import EcoMarket.EcoMarket.Productos.repository.ProveedorRepository;
 
 @Service
 public class ProveedorService {
@@ -18,7 +18,7 @@ public class ProveedorService {
         return proveedorRepository.findAll();
     }
 
-    public Proveedor obtenerPorId(Long id) {
+    public Proveedor obtenerPorId(int id) {
         return proveedorRepository.findById(id).orElse(null);
     }
 
@@ -26,7 +26,7 @@ public class ProveedorService {
         return proveedorRepository.save(proveedor);
     }
 
-    public void eliminar(Long id) {
+    public void eliminar(int id) {
         proveedorRepository.deleteById(id);
     }
 }

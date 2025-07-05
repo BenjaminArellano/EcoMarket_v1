@@ -8,6 +8,6 @@ import EcoMarket.EcoMarket.Productos.model.Resenia;
 
 
 @Repository
-public interface ReseniaRepository extends JpaRepository<Resenia, Long> {
+public interface ReseniaRepository extends JpaRepository<Resenia, Integer> {
 
 }

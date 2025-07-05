@@ -27,8 +27,8 @@ public class DetallePedidoService {
 
     public DetallePedido guardar(DetallePedido detalle) {
 
-        if (detalle.getCantidad() <= 0 || detalle.getCantidad() > 100) {
-            throw new IllegalArgumentException("La cantidad debe ser entre 1 y 100.");
+        if (detalle.getCantidad() <= 0) {
+            throw new IllegalArgumentException("La cantidad debe ser mayor a 1");
         }
 
         if (detalle.getPrecio() <= 0) {

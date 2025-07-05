@@ -8,7 +8,7 @@ import EcoMarket.EcoMarket.Usuarios.model.Rol;
 
 
 @Repository
-public interface RolRepository extends JpaRepository<Rol, Long> {
+public interface RolRepository extends JpaRepository<Rol, Integer> {
 
 
 }
