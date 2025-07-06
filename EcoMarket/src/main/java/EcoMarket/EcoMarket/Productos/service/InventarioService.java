@@ -20,14 +20,28 @@ public class InventarioService {
     }
 
     public Inventario obtenerPorId(int id) {
-        return inventarioRepository.findById(id).orElse(null);
+        return inventarioRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Inventario no encontrado con ID: " + id));
     }
 
     public Inventario guardar(Inventario inventario) {
+
+        if (inventario.getStock() <= 0) {
+            throw new IllegalArgumentException("El Stock debe ser mayor a 0");
+        }
+
+        if (inventario.getProducto() == null) {
+            throw new IllegalArgumentException("El inventario debe tener un producto.");
+        }
+
         return inventarioRepository.save(inventario);
     }
 
     public void eliminar(int id) {
+
+        if (!inventarioRepository.existsById(id)) {
+            throw new IllegalArgumentException("No se puede eliminar. Inventario con ID " + id + " no existe.");
+        }
+
         inventarioRepository.deleteById(id);
     }
 }

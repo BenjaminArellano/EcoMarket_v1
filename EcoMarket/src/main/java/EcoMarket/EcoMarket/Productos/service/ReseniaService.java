@@ -20,14 +20,36 @@ public class ReseniaService {
     }
 
     public Resenia obtenerPorId(int id) {
-        return reseniaRepository.findById(id).orElse(null);
+        return reseniaRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Resenia no encontrada con ID: " + id));
     }
 
     public Resenia guardar(Resenia resenia) {
+
+        if (resenia.getCalificacion() <= 0) {
+            throw new IllegalArgumentException("La Calificacion debe ser mayor a 0");
+        }
+
+        if (resenia.getComentario() == null || resenia.getComentario().trim().isEmpty()) {
+            throw new IllegalArgumentException("El Comentario no puede estar vacío.");
+        }
+
+        if (resenia.getProducto() == null) {
+            throw new IllegalArgumentException("La resenia debe tener un producto.");
+        }
+
+        if (resenia.getCliente() == null) {
+            throw new IllegalArgumentException("La resenia debe tener un Cliente.");
+        }
+
         return reseniaRepository.save(resenia);
     }
 
     public void eliminar(int id) {
+
+        if (!reseniaRepository.existsById(id)) {
+            throw new IllegalArgumentException("No se puede eliminar. Atributo con ID " + id + " no existe.");
+        }
+
         reseniaRepository.deleteById(id);
     }
 }
