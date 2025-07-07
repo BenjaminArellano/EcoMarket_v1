@@ -3,6 +3,8 @@ package EcoMarket.EcoMarket.Pedidos.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,6 +34,7 @@ public class Cupon {
     private int descuento;
 
     @OneToMany(mappedBy = "cupon")
+    @JsonIgnore
     private List<Pedido> pedidos = new ArrayList<>(); 
 
 }

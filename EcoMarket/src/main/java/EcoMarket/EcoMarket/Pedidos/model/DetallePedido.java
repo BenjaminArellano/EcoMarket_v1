@@ -1,5 +1,7 @@
 package EcoMarket.EcoMarket.Pedidos.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import EcoMarket.EcoMarket.Productos.model.Producto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -32,6 +34,7 @@ public class DetallePedido {
 
     @ManyToOne
     @JoinColumn(name = "pedido_id")
+    @JsonIgnore
     private Pedido pedido;
 
     @ManyToOne
