@@ -3,7 +3,7 @@ package EcoMarket.EcoMarket.Usuarios.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,7 +31,7 @@ public class Rol {
 
     @ManyToMany
     @JoinTable(name = "rol_permiso", joinColumns = @JoinColumn(name = "rol_id"), inverseJoinColumns = @JoinColumn(name = "permiso_id"))
-    @JsonManagedReference
+    @JsonIgnoreProperties("roles")
     private List<Permiso> permisos = new ArrayList<>();
 
     @Column(nullable = false)
