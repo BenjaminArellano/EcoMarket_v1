@@ -20,7 +20,7 @@ public class ReseniaService {
     }
 
     public Resenia obtenerPorId(int id) {
-        return reseniaRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Resenia no encontrada con ID: " + id));
+        return reseniaRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Resenia no encontrado con ID: " + id));
     }
 
     public Resenia guardar(Resenia resenia) {
@@ -47,7 +47,7 @@ public class ReseniaService {
     public void eliminar(int id) {
 
         if (!reseniaRepository.existsById(id)) {
-            throw new IllegalArgumentException("No se puede eliminar. Atributo con ID " + id + " no existe.");
+            throw new IllegalArgumentException("No se puede eliminar. Resenia con ID " + id + " no existe.");
         }
 
         reseniaRepository.deleteById(id);

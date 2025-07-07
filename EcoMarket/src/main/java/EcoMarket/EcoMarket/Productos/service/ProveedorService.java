@@ -41,7 +41,7 @@ public class ProveedorService {
     public void eliminar(int id) {
 
         if (!proveedorRepository.existsById(id)) {
-            throw new IllegalArgumentException("No se puede eliminar. proveedor con ID " + id + " no existe.");
+            throw new IllegalArgumentException("No se puede eliminar. Proveedor con ID " + id + " no existe.");
         }
 
         proveedorRepository.deleteById(id);

@@ -22,7 +22,7 @@ public class FacturaService {
     }
 
     public Factura ObtenerPorId(int id) {
-        return facturaRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Factura no encontrada con ID: " + id));
+        return facturaRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Factura no encontrado con ID: " + id));
     }
 
     public Factura guardar(Factura factura) {
@@ -52,7 +52,7 @@ public class FacturaService {
     public void eliminar(int id) {
 
         if (!facturaRepository.existsById(id)) {
-        throw new IllegalArgumentException("No se puede eliminar. Envio con ID " + id + " no existe.");
+        throw new IllegalArgumentException("No se puede eliminar. Factura con ID " + id + " no existe.");
         }
 
         facturaRepository.deleteById(id);

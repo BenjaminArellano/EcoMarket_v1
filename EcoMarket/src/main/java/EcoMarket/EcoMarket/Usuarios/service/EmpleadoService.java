@@ -49,7 +49,7 @@ public class EmpleadoService {
     public void eliminar(int id) {
 
         if (!empleadoRepository.existsById(id)) {
-            throw new IllegalArgumentException("No se puede eliminar. Atributo con ID " + id + " no existe.");
+            throw new IllegalArgumentException("No se puede eliminar. Empleado con ID " + id + " no existe.");
         }
 
         empleadoRepository.deleteById(id);

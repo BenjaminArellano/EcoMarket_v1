@@ -22,7 +22,7 @@ public class DetallePedidoService {
     }
 
     public DetallePedido ObtenerPorId(int id) {
-        return detallePedidoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Detalle de Pedido no encontrado con ID: " + id));
+        return detallePedidoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("DetallePedido no encontrado con ID: " + id));
     }
 
     public DetallePedido guardar(DetallePedido detalle) {
@@ -49,7 +49,7 @@ public class DetallePedidoService {
     public void eliminar(int id) {
 
     if (!detallePedidoRepository.existsById(id)) {
-        throw new IllegalArgumentException("No se puede eliminar. Detalle con ID " + id + " no existe.");
+        throw new IllegalArgumentException("No se puede eliminar. DetallePedido con ID " + id + " no existe.");
     }
 
     detallePedidoRepository.deleteById(id);

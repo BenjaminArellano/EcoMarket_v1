@@ -31,14 +31,6 @@ public class PermisoService {
             throw new IllegalArgumentException("El Nombre no puede estar vacío.");
         }
 
-        if (permiso.getDescripcion() == null || permiso.getDescripcion().trim().isEmpty()) {
-            throw new IllegalArgumentException("El Descripcion no puede estar vacío.");
-        }
-
-        if (permiso.getRoles() == null || permiso.getRoles().isEmpty()) {
-            throw new IllegalArgumentException("El permiso debe tener Roles.");
-        }
-
         return permisoRepository.save(permiso);
     }
 
