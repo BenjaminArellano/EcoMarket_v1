@@ -10,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -33,7 +34,7 @@ public class Cupon {
     @Column(nullable = false)
     private int descuento;
 
-    @OneToMany(mappedBy = "cupon")
+    @OneToMany(mappedBy = "cupon", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<Pedido> pedidos = new ArrayList<>(); 
 
