@@ -35,14 +35,6 @@ public class DetallePedidoService {
             throw new IllegalArgumentException("El precio debe ser mayor a 0");
         }
 
-        if (detalle.getPedido() == null) {
-            throw new IllegalArgumentException("El Detalle debe tener un pedido.");
-        }
-
-        if (detalle.getProducto() == null) {
-            throw new IllegalArgumentException("El Detalle debe tener un pedido.");
-        }
-
         return detallePedidoRepository.save(detalle);
     }
 
