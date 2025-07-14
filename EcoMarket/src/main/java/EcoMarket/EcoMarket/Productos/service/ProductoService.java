@@ -42,9 +42,10 @@ public class ProductoService {
             throw new IllegalArgumentException("El Precio debe ser mayor a 0");
         }
 
-        if (producto.getProveedor() == null) {
-            throw new IllegalArgumentException("El producto debe tener un proveedor.");
-        }
+        // Removed validation that producto must have proveedor
+//        if (producto.getProveedor() == null) {
+//            throw new IllegalArgumentException("El producto debe tener un proveedor.");
+//        }
 
         return productoRepository.save(producto);
     }

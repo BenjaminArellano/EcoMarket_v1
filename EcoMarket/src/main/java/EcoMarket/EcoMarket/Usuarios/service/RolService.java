@@ -26,9 +26,10 @@ public class RolService {
 
     public Rol guardar(Rol rol) {
 
-        if (rol.getPermisos() == null || rol.getPermisos().isEmpty()) {
-            throw new IllegalArgumentException("El rol debe tener un Permiso.");
-        }
+        // Removed validation that rol must have permisos
+//        if (rol.getPermisos() == null || rol.getPermisos().isEmpty()) {
+//            throw new IllegalArgumentException("El rol debe tener un Permiso.");
+//        }
 
         if (rol.getNombre() == null || rol.getNombre().trim().isEmpty()) {
             throw new IllegalArgumentException("El Nombre no puede estar vacío.");

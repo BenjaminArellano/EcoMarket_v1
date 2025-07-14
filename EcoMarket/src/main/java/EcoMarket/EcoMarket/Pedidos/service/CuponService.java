@@ -8,9 +8,6 @@ import org.springframework.stereotype.Service;
 import EcoMarket.EcoMarket.Pedidos.model.Cupon;
 import EcoMarket.EcoMarket.Pedidos.repository.CuponRepository;
 
-
-
-
 @Service
 public class CuponService {
 
@@ -32,16 +29,13 @@ public class CuponService {
         }
 
         if (cupon.getDescuento() <= 0 || cupon.getDescuento() > 100) {
-        throw new IllegalArgumentException("El descuento debe ser un valor entre 1 y 100.");
+            throw new IllegalArgumentException("El descuento debe ser un valor entre 1 y 100.");
         }
 
-        if (cupon.getPedidos() == null || cupon.getPedidos().isEmpty()) {
-            throw new IllegalArgumentException("El cupon debe tener un pedido.");
-        }
+        // Removed validation that cupon must have pedidos
 
         return cuponRepository.save(cupon);
     }
-
 
     public void eliminar(int id) {
 
